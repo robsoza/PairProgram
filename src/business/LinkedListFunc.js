@@ -47,17 +47,18 @@ class LinkedList {
     }
 
     next() {
+
         if (this.currentNode.forwardNode) {
             this.currentNode = this.currentNode.forwardNode;
         }
-        return this.currentNode.subject;
+        return this.currentNode;
     }
 
     previous() {
         if (this.currentNode.backwardNode) {
             this.currentNode = this.currentNode.backwardNode;
         }
-        return this.currentNode.subject;
+        return this.currentNode;
     }
 
     show() {
@@ -108,8 +109,4 @@ class LinkedList {
         return total;
     }
 }
-export default {
-    test1,
-    Node,
-    LinkedList
-};
+export default { test1, Node, LinkedList };

@@ -3,42 +3,39 @@ import './FormComp.css';
 
 function FormComp(props) {
 
-    function onSave(){
+    function onSave() {
 
         function focusElement(name) {
             const el = document.querySelector(`[name=${name}]`);
             el.focus();
             el.select();
-    }
+        }
         // Get all the input values into a person object to save
         const nodeToSave = {};
-   
         const inputs = document.getElementsByTagName('input');
 
-        for(let i = 0; i < inputs.length; i++) {
+        for (let i = 0; i < inputs.length; i++) {
             nodeToSave[inputs[i].name] = inputs[i].value;
         }
 
         // Do some simple validation
         try {
-            if(!nodeToSave.subject)  {
+            if (!nodeToSave.subject) {
                 focusElement('subject');
                 throw new Error('subject can not be blank');
             }
-            if(!nodeToSave.amount) {
+            if (!nodeToSave.amount) {
                 focusElement('amount');
                 throw new Error('amount can not be blank');
             }
 
             props.onSave(nodeToSave);
-            props.userMsg("Saved","status");
+            props.userMsg("Saved", "status");
         } catch (e) {
             // console.log(e);
             props.userMsg(e.message, "error");
         }
-
     }
-
 
     function onClick(e) {
         props.onClick(e.target.textContent);
@@ -64,7 +61,7 @@ function FormComp(props) {
                 <button onClick={onClick}>Next</button>
                 <button onClick={onClick}>Last</button>
                 <button onClick={onClick}>Delete</button>
-                
+                <h3> Total: {props.total} </h3><br />
             </div>
         </div>
     )

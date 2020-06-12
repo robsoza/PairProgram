@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import func from '../business/LinkedListFunc';
 import FormComp from './FormComp';
 
+
 function LinkedListComp() {
 
     const [ctrl] = useState(new func.LinkedList());
     const [node, setNode] = useState();
     const [total, setTotal] = useState(0);
-
     const [message, setMessage] = useState({ text: "", class: "" });
 
     useEffect(() => {
@@ -34,15 +34,17 @@ function LinkedListComp() {
         setMessage({ text: msg, class: cls });
     }
 
+    console.log(ctrl.currentNode);
+
     function save(node) {
-        console.log(node);
         ctrl.insert(node.subject, node.amount);
         setNode(ctrl.show());
         setTotal(ctrl.total());
+
     }
 
     function click(e) {
-        if (ctrl.first()) {
+        if (ctrl.currentNode) {
             if (e === "First") {
                 ctrl.first()
                 setNode(ctrl.show())
@@ -66,7 +68,7 @@ function LinkedListComp() {
             //delete
             else if (e === "Delete") {
                 ctrl.delete();
-                if (!ctrl.first()) {
+                if (!ctrl.currentNode) {
                     setNode("empty list");
                 } else {
                     setNode(ctrl.show())
@@ -74,19 +76,14 @@ function LinkedListComp() {
                 setTotal(ctrl.total());
             }
         }
-
     }
 
     return (
-
         <div>
-            <FormComp onClick={click} onSave={save} userMsg={userMsg} node={node} />
-            Total: {total} <br />
+            <FormComp onClick={click} onSave={save} userMsg={userMsg} node={node} total={total} />
             {message.text}
         </div>
-
     )
-
 }
 
 export default LinkedListComp; 
