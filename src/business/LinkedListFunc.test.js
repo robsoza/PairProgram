@@ -4,8 +4,10 @@ test('test plumming', () => {
     expect(func.test1()).toBe('hi')
 })
 
+test('test LinkedList Function', () => {
 //create list
 let list = new func.LinkedList();
+
 //insert first and test
 list.insert('a', 1);
 expect(list.total()).toBe(1);
@@ -43,13 +45,16 @@ expect(list.show()).toBe('subject: b, amount: 2');
 
 list.insert('d', 4);
 expect(list.previous()).toBe('b');
-console.log(list);
+
 list.insert('e', 5);
 list.insert('f', 6);
 list.insert('g', 7);
+//previous
 expect(list.previous()).toBe('f');
 expect(list.previous()).toBe('e');
 expect(list.previous()).toBe('d');
+//next
 expect(list.next()).toBe('e');
 expect(list.next()).toBe('f');
 expect(list.next()).toBe('g');
+});

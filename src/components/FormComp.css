@@ -5,3 +5,9 @@ body{
 h1{
     color: blue;
 }
+
+
+.clstatus {color: blue}
+.clsuccess {color: green}
+.clwarning {color: orange}
+.clerror {color: red}

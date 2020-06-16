@@ -10,7 +10,7 @@ function FormComp(props) {
             el.focus();
             el.select();
         }
-        // Get all the input values into a person object to save
+        // Get all the input values into a node object to save
         const nodeToSave = {};
         const inputs = document.getElementsByTagName('input');
 
@@ -31,6 +31,11 @@ function FormComp(props) {
 
             props.onSave(nodeToSave);
             props.userMsg("Saved", "status");
+
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].value = '';
+            }
+
         } catch (e) {
             // console.log(e);
             props.userMsg(e.message, "error");

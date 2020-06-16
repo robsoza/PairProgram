@@ -47,18 +47,17 @@ class LinkedList {
     }
 
     next() {
-
         if (this.currentNode.forwardNode) {
             this.currentNode = this.currentNode.forwardNode;
         }
-        return this.currentNode;
+        return this.currentNode.subject;
     }
 
     previous() {
         if (this.currentNode.backwardNode) {
             this.currentNode = this.currentNode.backwardNode;
         }
-        return this.currentNode;
+        return this.currentNode.subject;
     }
 
     show() {
@@ -72,29 +71,30 @@ class LinkedList {
                     this.head = null;
                     this.tail = null;
                     this.currentNode = null;
-
                 } else {
                     this.head = this.currentNode.forwardNode;
                     this.head.backwardNode = null;
                     this.currentNode = this.head;
                 }
+
             } else if (this.currentNode === this.tail) {
                 if (this.currentNode === this.head) {
                     this.head = null;
                     this.tail = null;
                     this.currentNode = null;
-
                 } else {
                     this.tail = this.currentNode.backwardNode;
                     this.tail.forwardNode = null;
                     this.currentNode = this.tail
                 }
+
             } else {
                 this.currentNode.backwardNode.forwardNode = this.currentNode.forwardNode;
                 this.currentNode.forwardNode.backwardNode = this.currentNode.backwardNode;
                 this.currentNode = this.currentNode.backwardNode;
             }
-        } else return 'list is empty'
+        } 
+        else return 'list is empty'
     }
 
     total() {
@@ -109,4 +109,5 @@ class LinkedList {
         return total;
     }
 }
+
 export default { test1, Node, LinkedList };

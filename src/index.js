@@ -4,10 +4,12 @@ import './index.css';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
 import LinkedListComp from './components/LinkedListComp';
+import QueueStackComp from './components/QueueStackComp';
 
 ReactDOM.render(
   <React.StrictMode>
     <LinkedListComp />
+    <QueueStackComp />
   </React.StrictMode>,
   document.getElementById('root')
 );
