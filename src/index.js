@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
-import LinkedListComp from './components/LinkedListComp';
-import QueueStackComp from './components/QueueStackComp';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <LinkedListComp />
-    <QueueStackComp />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

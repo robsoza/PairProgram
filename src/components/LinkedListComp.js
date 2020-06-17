@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import func from '../business/LinkedListFunc';
 import FormComp from './FormComp';
+import { ThemeContext } from './ThemeContextComp';
 
 function LinkedListComp() {
 
@@ -73,10 +74,14 @@ function LinkedListComp() {
     }
 
     return (
-        <div>
-            <FormComp onClick={click} onSave={save} userMsg={userMsg} node={node} total={total} />
-            <div className={message.class}>{message.text}</div>
-        </div>
+        <ThemeContext.Consumer>
+            {({ theme }) => (
+                <div style={{ backgroundColor: theme.background }}>
+                    <FormComp onClick={click} onSave={save} userMsg={userMsg} node={node} total={total} />
+                    <div className={message.class}>{message.text}</div>
+                </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 

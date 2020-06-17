@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import func from '../business/FifoLifoFunc';
 import FifoLifoComp from './FifoLifoComp';
+import { ThemeContext } from './ThemeContextComp';
 
 function QueueStackComp() {
 
@@ -8,9 +9,7 @@ function QueueStackComp() {
     const [lifo, setLifo] = useState();
     const [fifoNode, setFifoNode] = useState(1);
     const [lifoNode, setLifoNode] = useState(1);
-
     const [message, setMessage] = useState({ text: "", class: "" });
-
     const [queueCtrl] = useState(new func.FifoQueue());
     const [stackCtrl] = useState(new func.LifoStack());
 
@@ -56,15 +55,16 @@ function QueueStackComp() {
     }
 
     return (
-        <div>
-            <FifoLifoComp
-                queue={fifo}
-                stack={lifo}
-                onSave={onSave}
-                onDelete={onDelete}
-                userMsg={userMsg} />
-            <label className={message.class}>{message.text}</label>
-        </div>
+        <ThemeContext.Consumer>
+            {({ theme }) => (
+                <div style={{ backgroundColor: theme.background }}>
+                    <FifoLifoComp
+                        queue={fifo} stack={lifo} onSave={onSave}
+                        onDelete={onDelete} userMsg={userMsg} />
+                    <label className={message.class}>{message.text}</label>
+                </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 
