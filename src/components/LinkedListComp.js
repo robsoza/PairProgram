@@ -36,6 +36,7 @@ function LinkedListComp() {
         ctrl.insert(node.subject, node.amount);
         setNode(ctrl.show());
         setTotal(ctrl.total());
+        console.log(ctrl.show());
     }
 
     function click(e) {

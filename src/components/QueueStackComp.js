@@ -37,16 +37,26 @@ function QueueStackComp() {
     function onSave() {
         setFifoNode(fifoNode + 1);
         queueCtrl.enqueue(fifoNode);
+        userMsg("added " + fifoNode, "status");
         setFifo(queueCtrl.show());
 
         setLifoNode(lifoNode + 1);
         stackCtrl.putIn(lifoNode)
         setLifo(stackCtrl.show());
-
-        userMsg();
     }
 
     function onDelete() {
+        let qArr = queueCtrl.show();
+        let sArr = stackCtrl.show();
+        let first = qArr[0];
+        let last = sArr[0];
+
+        if (queueCtrl.show() !== 'Empty Queue') {
+            userMsg("deleted Fifo:  " + first + "Lifo:  " + last);
+        } else {
+            userMsg();
+        }
+
         queueCtrl.dequeue();
         setFifo(queueCtrl.show());
 

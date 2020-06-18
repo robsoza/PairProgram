@@ -5,7 +5,7 @@ import LinkedListComp from './components/LinkedListComp';
 import QueueStackComp from './components/QueueStackComp';
 
 // An intermediate component that uses the ThemedButton
-class ThemeApp extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
 
@@ -38,4 +38,4 @@ class ThemeApp extends React.Component {
   }
 }
 
-export default ThemeApp;
+export default App;
